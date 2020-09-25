@@ -1,62 +1,60 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Apr 24, 2015 at 03:05 
--- Server version: 5.1.41
--- PHP Version: 5.3.1
+-- Host: 127.0.0.1
+-- Generation Time: 25 Sep 2020 pada 17.51
+-- Versi Server: 10.1.13-MariaDB
+-- PHP Version: 5.6.23
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `crud_sederhana`
+-- Database: `dbcrud`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Struktur dari tabel `admin`
 --
 
-CREATE TABLE IF NOT EXISTS `admin` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `admin` (
+  `id` int(5) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(35) NOT NULL,
-  `nama` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`id`, `username`, `password`, `nama`) VALUES
-(1, 'admin', '123', 'Redo Kusuma'),
-(2, 'rio', '21232f297a57a5a743894a0e4a801fc3', 'Rio');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `berita`
---
-
-CREATE TABLE IF NOT EXISTS `berita` (
-  `id_berita` int(5) NOT NULL,
-  `judul` varchar(200) NOT NULL,
-  `isi_berita` text NOT NULL,
-  `tgl_berita` date NOT NULL,
-  PRIMARY KEY (`id_berita`)
+  `nama` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `berita`
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`, `nama`) VALUES
+(1, 'admin', 'redhat123', 'Automation Testing');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `berita`
+--
+
+CREATE TABLE `berita` (
+  `id_berita` int(5) NOT NULL,
+  `judul` varchar(200) NOT NULL,
+  `isi_berita` text NOT NULL,
+  `tgl_berita` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `berita`
 --
 
 INSERT INTO `berita` (`id_berita`, `judul`, `isi_berita`, `tgl_berita`) VALUES
@@ -65,17 +63,17 @@ INSERT INTO `berita` (`id_berita`, `judul`, `isi_berita`, `tgl_berita`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `buku_tamu`
+-- Struktur dari tabel `buku_tamu`
 --
 
-CREATE TABLE IF NOT EXISTS `buku_tamu` (
+CREATE TABLE `buku_tamu` (
   `nama` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
   `komentar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `buku_tamu`
+-- Dumping data untuk tabel `buku_tamu`
 --
 
 INSERT INTO `buku_tamu` (`nama`, `email`, `komentar`) VALUES
@@ -85,11 +83,11 @@ INSERT INTO `buku_tamu` (`nama`, `email`, `komentar`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guru`
+-- Struktur dari tabel `guru`
 --
 
-CREATE TABLE IF NOT EXISTS `guru` (
-  `id_guru` int(5) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `guru` (
+  `id_guru` int(5) NOT NULL,
   `nip` varchar(20) NOT NULL,
   `nama` varchar(40) NOT NULL,
   `tpt_lahir` varchar(60) NOT NULL,
@@ -97,12 +95,11 @@ CREATE TABLE IF NOT EXISTS `guru` (
   `kelamin` varchar(15) NOT NULL,
   `agama` varchar(10) NOT NULL,
   `jabatan` varchar(20) NOT NULL,
-  `foto` varchar(40) NOT NULL,
-  PRIMARY KEY (`id_guru`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `foto` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `guru`
+-- Dumping data untuk tabel `guru`
 --
 
 INSERT INTO `guru` (`id_guru`, `nip`, `nama`, `tpt_lahir`, `tgl_lahir`, `kelamin`, `agama`, `jabatan`, `foto`) VALUES
@@ -111,20 +108,19 @@ INSERT INTO `guru` (`id_guru`, `nip`, `nama`, `tpt_lahir`, `tgl_lahir`, `kelamin
 -- --------------------------------------------------------
 
 --
--- Table structure for table `siswa`
+-- Struktur dari tabel `siswa`
 --
 
-CREATE TABLE IF NOT EXISTS `siswa` (
-  `id_siswa` int(5) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `siswa` (
+  `id_siswa` int(5) NOT NULL,
   `nama` varchar(40) NOT NULL,
   `kelamin` varchar(15) NOT NULL,
   `agama` varchar(20) NOT NULL,
-  `alamat` varchar(200) NOT NULL,
-  PRIMARY KEY (`id_siswa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=43 ;
+  `alamat` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `siswa`
+-- Dumping data untuk tabel `siswa`
 --
 
 INSERT INTO `siswa` (`id_siswa`, `nama`, `kelamin`, `agama`, `alamat`) VALUES
@@ -136,11 +132,11 @@ INSERT INTO `siswa` (`id_siswa`, `nama`, `kelamin`, `agama`, `alamat`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teknisi`
+-- Struktur dari tabel `teknisi`
 --
 
-CREATE TABLE IF NOT EXISTS `teknisi` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `teknisi` (
+  `id` int(5) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `pelanggan` varchar(100) NOT NULL,
   `alamat` varchar(200) NOT NULL,
@@ -148,12 +144,11 @@ CREATE TABLE IF NOT EXISTS `teknisi` (
   `telp` varchar(20) NOT NULL,
   `tgl` date NOT NULL,
   `jam` time NOT NULL,
-  `ket` varchar(200) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `ket` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `teknisi`
+-- Dumping data untuk tabel `teknisi`
 --
 
 INSERT INTO `teknisi` (`id`, `nama`, `pelanggan`, `alamat`, `kontak`, `telp`, `tgl`, `jam`, `ket`) VALUES
@@ -165,17 +160,16 @@ INSERT INTO `teknisi` (`id`, `nama`, `pelanggan`, `alamat`, `kontak`, `telp`, `t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teknisi1`
+-- Struktur dari tabel `teknisi1`
 --
 
-CREATE TABLE IF NOT EXISTS `teknisi1` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+CREATE TABLE `teknisi1` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `teknisi1`
+-- Dumping data untuk tabel `teknisi1`
 --
 
 INSERT INTO `teknisi1` (`id`, `nama`) VALUES
@@ -187,57 +181,140 @@ INSERT INTO `teknisi1` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `id` int(5) NOT NULL,
   `nama` varchar(35) NOT NULL,
   `alamat` varchar(200) NOT NULL,
   `telp` varchar(20) NOT NULL,
   `kontak` varchar(35) NOT NULL,
   `type` varchar(50) NOT NULL,
   `sn` varchar(35) NOT NULL,
-  `tgl` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+  `tgl` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id`, `nama`, `alamat`, `telp`, `kontak`, `type`, `sn`, `tgl`) VALUES
-(9, 'keke  ', 'bantul', '', '', 'Matrix Series', '', '2015-04-21'),
-(11, 'mimi ', '', '', '', 'Matrix Series', '', '0000-00-00'),
-(12, 'nn ', '', '', '', 'Matrix Series', '', '0000-00-00'),
-(13, 'o', '', '', '', 'Matrix Series', '', '0000-00-00'),
-(14, 'p', '', '', '', 'Matrix Series', '', '0000-00-00'),
-(15, 'lll', '', '', '', 'Matrix Series', '', '0000-00-00'),
-(16, 'ppppp', '', '', '', 'Matrix Series', '', '0000-00-00');
+(17, 'Fauzi ', 'Bogor', '123456789', '123456789', 'Matrix Series', '123456789', '2020-09-03');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user1`
+-- Struktur dari tabel `user1`
 --
 
-CREATE TABLE IF NOT EXISTS `user1` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user1` (
+  `id` int(5) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `alamat` varchar(200) NOT NULL,
   `telp` varchar(25) NOT NULL,
-  `kontak` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `kontak` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user1`
+-- Dumping data untuk tabel `user1`
 --
 
 INSERT INTO `user1` (`id`, `nama`, `alamat`, `telp`, `kontak`) VALUES
-(1, 'PT PUTRI ', 'jogja', '08995477796', 'putri'),
-(10, 'ok', 'piyungan', '', '');
+(11, 'Fauzi', 'Bogor', '123456789', '123456789'),
+(13, 'Wawan', 'Cimanggu', '123456789', '1234567');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `berita`
+--
+ALTER TABLE `berita`
+  ADD PRIMARY KEY (`id_berita`);
+
+--
+-- Indexes for table `guru`
+--
+ALTER TABLE `guru`
+  ADD PRIMARY KEY (`id_guru`);
+
+--
+-- Indexes for table `siswa`
+--
+ALTER TABLE `siswa`
+  ADD PRIMARY KEY (`id_siswa`);
+
+--
+-- Indexes for table `teknisi`
+--
+ALTER TABLE `teknisi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `teknisi1`
+--
+ALTER TABLE `teknisi1`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user1`
+--
+ALTER TABLE `user1`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `guru`
+--
+ALTER TABLE `guru`
+  MODIFY `id_guru` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `siswa`
+--
+ALTER TABLE `siswa`
+  MODIFY `id_siswa` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+--
+-- AUTO_INCREMENT for table `teknisi`
+--
+ALTER TABLE `teknisi`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `teknisi1`
+--
+ALTER TABLE `teknisi1`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT for table `user1`
+--
+ALTER TABLE `user1`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
