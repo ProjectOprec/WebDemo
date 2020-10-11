@@ -1,4 +1,4 @@
 # WebDemo
 
-username: admin
-password: redhat123
+|| username: admin
+|| password: redhat123
